@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-06-04T09:47:19.961Z</updated>
+  <updated>2021-06-04T13:14:00.805Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从宏观上看C++流</title>
+    <link href="http://example.com/2021/06/04/C-%E6%B5%81/"/>
+    <id>http://example.com/2021/06/04/C-%E6%B5%81/</id>
+    <published>2021-06-04T10:12:49.000Z</published>
+    <updated>2021-06-04T13:14:00.805Z</updated>
+    
+    <content type="html"><![CDATA[<p>C++流主要是通过输入流和输出流来读写文件，其对于处理真实世界的数据是一个非常实用的技巧,以下来对其进行详细的介绍。</p><span id="more"></span><h4 id="什么是C-流"><a href="#什么是C-流" class="headerlink" title="什么是C++流"></a>什么是C++流</h4><p>C++的流是一种数据的载体，通过它可以实现数据交换和传输。就像水流是由一串水组成的一样，C++的数据流就是由一串数据组成的更长数据。简单来说，C++流就是输入和输出，其中输入流就是数据从键盘、文件或者是指定字符串流入到程序中；输出流就是程序中的数据流向屏幕、文件或字符串。</p><h4 id="C-中的输入流和输出流"><a href="#C-中的输入流和输出流" class="headerlink" title="C++中的输入流和输出流"></a>C++中的输入流和输出流</h4><ol><li>通过标准输入设备——键盘（C++中使用cin），或标准输出设备——显示器（C++中使用cout）进行输入和输出操作，简称为标准I/O。</li><li>通过对文件进行输入和输出操作，简称为文件I/O。</li><li>通过对程序中的指定字符串进行输入和输出操作，简称为串I/O。</li></ol><h4 id="C-中输入输出流使用的头文件"><a href="#C-中输入输出流使用的头文件" class="headerlink" title="C++中输入输出流使用的头文件"></a>C++中输入输出流使用的头文件</h4><ol><li>标准输入输出：#include &lt;iostream&gt;</li><li>文件输入输出： #include &lt;fstream&gt;</li><li>串输入输出： #include &lt;sstream&gt;</li></ol><h4 id="为什么要使用C-流"><a href="#为什么要使用C-流" class="headerlink" title="为什么要使用C++流"></a>为什么要使用C++流</h4><ol><li>毫无疑问，一个有意义的程序一定会有程序本身想要的输入，和你所想看到的输出，这是一个程序最本质的意义。</li><li>对于标准输入输出流：在所需要输入的数据比较简单，数量少，输出的数据也比较简单，并且是一个即时的数据，使用标准输入输出流是有很大裨益的。</li><li>对于文件输入输出流：<ol><li>在所需要的数据很庞大，并且在文件中有着一定的规律（例如表格），使用文件输入流很有必要。</li><li>在需要对程序进行大量的测试，需要对同样或者大部分相同的数据进行输入，使用文件流可节省很多时间。</li><li>通过文件输入输出流可以对文件进行加密以保护文件的安全。</li></ol></li><li>对于串输入输出流：<ol><li>以字符串作为输入可以实现从字符串到数值型数据的转变。</li><li>当需要从一个长字符串中提取一些想要的信息，使用串输入输出流是比较方便的（例：从 “2021 年 6 月 1 日“中提取月份，即可将此长字符串作为一个输入流，依次读入到第三个数据即为月份）。 </li></ol></li></ol><h4 id="C-流我们应该学到什么"><a href="#C-流我们应该学到什么" class="headerlink" title="C++流我们应该学到什么"></a>C++流我们应该学到什么</h4><ol><li>对于文件输入输出流的使用即读写文本文件。</li><li>对于串输入输出流的使用即读写字符串。</li><li>文件加密。</li><li>文件输入输出流的随机访问。</li><li>处理BMP格式的图像文件。</li></ol><h4 id="友情提示："><a href="#友情提示：" class="headerlink" title="友情提示："></a>友情提示：</h4><p>若要详细学习C++流的5点内容，请点击标签中的C++流。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;C++流主要是通过输入流和输出流来读写文件，其对于处理真实世界的数据是一个非常实用的技巧,以下来对其进行详细的介绍。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="C++" scheme="http://example.com/categories/C/"/>
+    
+    
+    <category term="C++流" scheme="http://example.com/tags/C-%E6%B5%81/"/>
+    
+  </entry>
   
   <entry>
     <title>C++操作图像中的像素-Picture类</title>
