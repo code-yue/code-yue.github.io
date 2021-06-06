@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2021/06/06/C-%E6%B5%81%E4%B9%8B%E8%AF%BB%E5%86%99%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    
+    <lastmod>2021-06-06</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/2021/06/05/C-%E6%B5%81%E4%B9%8B%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/</loc>
     
     <lastmod>2021-06-05</lastmod>
@@ -39,7 +46,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2021-06-05</lastmod>
+    <lastmod>2021-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -47,14 +54,14 @@
   
   <url>
     <loc>http://example.com/tags/C-picture/</loc>
-    <lastmod>2021-06-05</lastmod>
+    <lastmod>2021-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/C-%E6%B5%81/</loc>
-    <lastmod>2021-06-05</lastmod>
+    <lastmod>2021-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -63,7 +70,7 @@
   
   <url>
     <loc>http://example.com/categories/C/</loc>
-    <lastmod>2021-06-05</lastmod>
+    <lastmod>2021-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
