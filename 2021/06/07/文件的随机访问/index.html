@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>catagories | IT 日志</title>
+  <title>文件的随机访问 | IT 日志</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
   
@@ -85,49 +85,179 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-文件的随机访问" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/category/index.html">catagories</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      文件的随机访问
     </h1>
   
 
-,
+
       </header>
     
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2021-06-07T08:51:21.000Z" itemprop="datePublished">2021年06月07日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2021/06/07/%E6%96%87%E4%BB%B6%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE/#comments" class="article-comment-link">
+  
+    
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/07/%E6%96%87%E4%BB%B6%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE/" itemprop="commentCount"></span>
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
     <div class="e-content article-entry" itemprop="articleBody">
-      <div class="author-page">
-        <div class="photo"><img src="/asset/1.png"></div>
-        <div class="author">
-          <div><i class="fa fa-user">name：</i>Jack</div>
-          
-            <div>
-              <i class="fa fa-email">email：</i>
-              <a href="mailto:y2511308577.com@outlook.com" target="_blank">y2511308577.com@outlook.com</a>
+      
+        <p>前面已经掌握了C++的文件输入输出流，但前面我们的输入方式为顺序访问，下来介绍如何实现文件的随机读写。</p>
+<span id="more"></span>
+
+<h3 id="顺序访问与随机访问"><a href="#顺序访问与随机访问" class="headerlink" title="顺序访问与随机访问"></a>顺序访问与随机访问</h3><ul>
+<li><h4 id="顺序访问"><a href="#顺序访问" class="headerlink" title="顺序访问"></a>顺序访问</h4><p>从文件中依次读取一个数据项或者向文件中依次写入一个数据项，没有向前或者向后跳过数据项，这种访问模式称为顺序访问。</p>
+</li>
+<li><h4 id="随机访问"><a href="#随机访问" class="headerlink" title="随机访问"></a>随机访问</h4><p>通过文件指针指定访问文件中的特定项，而无须首先读取之前的所有项，这种访问模式称为随机访问。</p>
+<p>注：随机访问并没有任何的”随机性”——该术语只是意味着可以读取和修改存储于文件中任何位置的任何项。</p>
+</li>
+<li><h4 id="文件指针"><a href="#文件指针" class="headerlink" title="文件指针"></a>文件指针</h4><p>在文件操作中有一个文件指针，用来指明当前应进行读写的位置，没有具体变量。</p>
+</li>
+</ul>
+<h3 id="随机访问有关的成员函数"><a href="#随机访问有关的成员函数" class="headerlink" title="随机访问有关的成员函数"></a>随机访问有关的成员函数</h3><ol>
+<li>gcount() : 返回最后一次输入所读入的字节数。</li>
+<li>tellg() : 返回输入文件指针的当前位置。</li>
+<li>seekg(文件中的位置) ：将输入文件中指针移到指定的位置。</li>
+<li>seekg(位移量，参照位置) : 以参照位置为基础移动若干字节。</li>
+<li>tellp() : 返回输出文件指针的当前位置。</li>
+<li>seekp(文件中的位置) ：将输出文件中指针移动到指定的位置。</li>
+<li>seekp(位移量，参照位置) : 以参照位置为基础移动若干字节。</li>
+</ol>
+<p>注：对于上面的函数中，”文件中的位置”和”位移量”为 long 型参数，以字节为单位。”参照位置”可以是下面三者之一：</p>
+<ol>
+<li> ios::beg 文件开头</li>
+<li>ios::cur 指向输入或输出的当前位置</li>
+<li>ios::end 文件某尾</li>
+</ol>
+<p>比如：</p>
+<ul>
+<li>file.seekg(3)  指针移动到第三个字符的位置。</li>
+<li>file.seekg(-3,ios::cur)  指针从当前位置向前移动三个字符。</li>
+<li>file.seekg(3,ios::cur)   指针从当前位置向后移动三个字符。</li>
+</ul>
+<p>其他几个成员函数未举例，可根据以上例子自行体会。</p>
+<p>目前文件的随机访问的基础知识已介绍完，不过可能会有一种感觉：感觉其很有用，知识也都掌握了，但是其有什么意义呢？怎么知道我想要的数据在文件中的位置，如果有这种感觉，下面的内容可能会对你有帮助。</p>
+<h3 id="索引-随机访问"><a href="#索引-随机访问" class="headerlink" title="索引+随机访问"></a>索引+随机访问</h3><ul>
+<li><h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><ol>
+<li>将数据和偏移量(相对于文件开头)一对一建立索引。</li>
+<li>将索引文件导入到内存中(数组或向量)。</li>
+<li>如果想要查找某条数据，先从索引中找到对应的偏移量然后在从数据文件中取出即可。</li>
+</ol>
+</li>
+<li><h4 id="优点-相比于顺序访问"><a href="#优点-相比于顺序访问" class="headerlink" title="优点(相比于顺序访问)"></a>优点(相比于顺序访问)</h4><ol>
+<li>空间优化：索引文件比数据文件小的多。</li>
+<li>时间优化：将数据文件内容读入到内存中就需要占用很大的内存。</li>
+</ol>
+</li>
+</ul>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%AE%BF%E9%97%AE%E4%B8%8E%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE"><span class="toc-number">1.</span> <span class="toc-text">顺序访问与随机访问</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%AE%BF%E9%97%AE"><span class="toc-number">1.1.</span> <span class="toc-text">顺序访问</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE"><span class="toc-number">1.2.</span> <span class="toc-text">随机访问</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%8C%87%E9%92%88"><span class="toc-number">1.3.</span> <span class="toc-text">文件指针</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%E6%9C%89%E5%85%B3%E7%9A%84%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">随机访问有关的成员函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95-%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE"><span class="toc-number">3.</span> <span class="toc-text">索引+随机访问</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-%E7%9B%B8%E6%AF%94%E4%BA%8E%E9%A1%BA%E5%BA%8F%E8%AE%BF%E9%97%AE"><span class="toc-number">3.2.</span> <span class="toc-text">优点(相比于顺序访问)</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
             </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="http://example.com/2021/06/07/文件的随机访问/">http://example.com/2021/06/07/文件的随机访问/</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
           
+    <div class="article-reward">
+        <a id="reward-btn" href="javascript:;">打赏</a>
+        <div id="reward-content">
+            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
             <div>
-              <i class="fa fa-github">github：</i>
-              <a href="https://github.com/code-yue" target="_blank">code-yue</a>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/wechat.jpg">
+                    <img class="er-code" src="/asset/3.jpg">
+                </div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/alipay.jpg">
+                    <img class="er-code" src="/asset/2.jpg">
+                </div>
             </div>
-          
-            <div>
-              <i class="fa fa-QQ">QQ：</i>
-              <a href="/asset/4.png" target="_blank">2511308755</a>
-            </div>
-          
-            <div>
-              <i class="fa fa-微信">微信：</i>
-              <a href="/asset/5.jpg" target="_blank">点击扫描二维码</a>
-            </div>
-          
+            <p class="reward-desc"></p>
         </div>
-      </div>
+    </div>
+
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-%E6%B5%81/" rel="tag">C++流</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+  
+    <a href="/2021/06/06/%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86%E4%B9%8B%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">文件加密之凯撒密码</div>
+    </a>
+  
+</nav>
+
+      
       
         
 
@@ -140,7 +270,7 @@
 
 
       
-    </div>
+    </footer>
   </div>
 </article>
 </section>
