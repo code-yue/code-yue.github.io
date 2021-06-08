@@ -152,6 +152,8 @@
 <p>fstream file;</p>
 <p>//以二进制格式打开文件</p>
 <p>file.open(filename,ios::in|ios::out|ios::binary);</p>
+<p>//get_int函数</p>
+<p>int get_int(fstream&amp; stream,int offset)<br>{<br>    stream.seekg(offset);<br>    int result = 0;<br>    int base = 1;<br>    for(int i=0;i&lt;4;i++)<br>    {<br>        result = result +stream.get()*base;<br>        base = base*256;<br>    }<br>    return result;<br>}</p>
 <p>若要获取图像的大小</p>
 <p>int file_size = get_int(file,2);</p>
 <p>图像数据起始处的偏移量</p>
