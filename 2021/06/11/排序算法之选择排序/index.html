@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>联系 | IT 日志</title>
+  <title>排序算法之选择排序 | IT 日志</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
   
@@ -85,49 +85,157 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-排序算法之选择排序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/about/index.html">联系</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      排序算法之选择排序
     </h1>
   
 
-,
+
       </header>
     
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2021-06-11T13:48:53.000Z" itemprop="datePublished">2021年06月11日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2021/06/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/#comments" class="article-comment-link">
+  
+    
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" itemprop="commentCount"></span>
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
     <div class="e-content article-entry" itemprop="articleBody">
-      <div class="author-page">
-        <div class="photo"><img src="/asset/1.png"></div>
-        <div class="author">
-          <div><i class="fa fa-user">name：</i>Jack</div>
-          
-            <div>
-              <i class="fa fa-email">email：</i>
-              <a href="mailto:y2511308577.com@outlook.com" target="_blank">y2511308577.com@outlook.com</a>
+      
+        <p>选择排序是排序算法中最简单粗暴的一种，之前写过冒泡排序，而选择排序可是冒泡排序的退化版，但为了排序算法的完整性，还是把它写了下来。</p>
+<span id="more"></span>
+
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>每次找到数组中的最大值(从大到小排)或最小值(从小到大排)放在前面。</p>
+<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ol>
+<li>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置。</li>
+<li>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。</li>
+<li>重复第二步，直到所有元素均排序完毕</li>
+</ol>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li><p>时间复杂度：</p>
+<ul>
+<li>最好情况：O(n^2)</li>
+<li>最坏情况：O(n^2)</li>
+<li>平均情况：O(n^2)</li>
+</ul>
+</li>
+<li><p>空间复杂度：O(1)</p>
+</li>
+<li><p>稳定性：稳定</p>
+</li>
+</ul>
+<h3 id="动图演示"><a href="#动图演示" class="headerlink" title="动图演示"></a>动图演示</h3><img src="/2021/06/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/1.gif" class>
+
+<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//待排序的数组</span></span><br><span class="line">    <span class="keyword">int</span> num[<span class="number">10</span>]=&#123;<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp=i;<span class="comment">//标记最小元素</span></span><br><span class="line">        <span class="comment">//找到最小元素索引</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;<span class="number">10</span>;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(num[temp]&gt;num[j])</span><br><span class="line">            &#123;</span><br><span class="line">                temp=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将最小值放入数组最左边</span></span><br><span class="line">        <span class="built_in">swap</span>(num[i],num[temp]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//打印数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; num[i]&lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">实现步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E5%9B%BE%E6%BC%94%E7%A4%BA"><span class="toc-number">4.</span> <span class="toc-text">动图演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">源码</span></a></li></ol>
+    </div>
+  </div>
+
+
             </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="http://example.com/2021/06/11/排序算法之选择排序/">http://example.com/2021/06/11/排序算法之选择排序/</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
           
+    <div class="article-reward">
+        <a id="reward-btn" href="javascript:;">打赏</a>
+        <div id="reward-content">
+            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
             <div>
-              <i class="fa fa-github">github：</i>
-              <a href="https://github.com/code-yue" target="_blank">code-yue</a>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/wechat.jpg">
+                    <img class="er-code" src="/asset/3.jpg">
+                </div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/alipay.jpg">
+                    <img class="er-code" src="/asset/2.jpg">
+                </div>
             </div>
-          
-            <div>
-              <i class="fa fa-QQ">QQ：</i>
-              <a href="/asset/4.png" target="_blank">2511308755</a>
-            </div>
-          
-            <div>
-              <i class="fa fa-微信">微信：</i>
-              <a href="/asset/5.jpg" target="_blank">点击扫描二维码</a>
-            </div>
-          
+            <p class="reward-desc"></p>
         </div>
-      </div>
+    </div>
+
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+  
+    <a href="/2021/06/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">排序算法之快速排序</div>
+    </a>
+  
+</nav>
+
+      
       
         
 
@@ -140,7 +248,7 @@
 
 
       
-    </div>
+    </footer>
   </div>
 </article>
 </section>
