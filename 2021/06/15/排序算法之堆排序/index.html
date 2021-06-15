@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>C++操作图像中的像素-Picture类 | IT 日志</title>
+  <title>排序算法之堆排序 | IT 日志</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
   
@@ -85,7 +85,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-C-操作图像中的像素" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-排序算法之堆排序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -93,7 +93,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      C++操作图像中的像素-Picture类
+      排序算法之堆排序
     </h1>
   
 
@@ -104,7 +104,7 @@
       
       <span class="article-date">
   <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-06-04T09:45:23.670Z" itemprop="datePublished">2021年06月04日</time>
+  <time class="dt-published" datetime="2021-06-15T15:44:23.000Z" itemprop="datePublished">2021年06月15日</time>
 </span>
       
   <div class="article-category">
@@ -122,10 +122,10 @@
 
       
       
-<a href="/2021/06/04/C-%E6%93%8D%E4%BD%9C%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%9A%84%E5%83%8F%E7%B4%A0/#comments" class="article-comment-link">
+<a href="/2021/06/15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/#comments" class="article-comment-link">
   
     
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/04/C-%E6%93%8D%E4%BD%9C%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%9A%84%E5%83%8F%E7%B4%A0/" itemprop="commentCount"></span>
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/" itemprop="commentCount"></span>
     
     
     
@@ -140,53 +140,12 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>​    数字图像由像素组成，在C++中操作图像即是对图像中的某些或全部像素的操作，下介绍使用picture类型对图片像素进行操作。</p>
+        <p>前面介绍了6中排序算法，这里介绍第七种——堆排序。</p>
 <span id="more"></span>
 
-<h4 id="如何使用picture类型"><a href="#如何使用picture类型" class="headerlink" title="如何使用picture类型"></a>如何使用picture类型</h4><ol>
-<li><p>将文件picture.cpp、picture.h、lodepng.cpp和lodepng.h复制到用户的源文件所在文件夹（注：文件可在<u>wiley.com./go/bclo3</u>中的配套代码下的ch04/worked_example_2下找到），如下图：</p>
-<img src="/2021/06/04/C-%E6%93%8D%E4%BD%9C%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%9A%84%E5%83%8F%E7%B4%A0/1.png" class></li>
-<li><p>在工作空间中打开它们，具体步骤：右键picture-&gt;添加文件-&gt;同时打开4个文件，然后编译器会弹出信息，点击确定即可，打开之后如下图：</p>
-</li>
-</ol>
-<img src="/2021/06/04/C-%E6%93%8D%E4%BD%9C%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%9A%84%E5%83%8F%E7%B4%A0/2.png" class>
-
-<ol start="3">
-<li><p>在头文件中使用如下语句：#include “picture.h”,注：picture.h应由引号而不是尖括号括起来。</p>
-</li>
-<li><p>将要处理的图片复制到源文件所在的文件夹，图片名称为queen注：图片的类型必需为png类型。</p>
-</li>
-<li><p>打开图片，使用如下代码：Picture pic(“queen.png”)。</p>
-<p>​    该语句定义了一个Picture 类型的变量 pic，用于保存图片的像素。</p>
-<p>​    图片中每一个像素都有x和y坐标，其中0&lt;=x&lt;pic.width()(即图片的宽度)，0&lt;=y&lt;pic.height()(即图片的高度);例如(0,0)就位于图片的左上角，且y轴向下。</p>
-<p>​    对于每一个像素都有一个RGB颜色值，该值由三原色组成：红、绿、蓝。每一个原色值都在0~255之间，所以我们操作图片中的像素即通过改变像素的颜色值来达到我们的目的。</p>
-</li>
-</ol>
-<h4 id="Picture类型部分成员函数"><a href="#Picture类型部分成员函数" class="headerlink" title="Picture类型部分成员函数"></a>Picture类型部分成员函数</h4><ol>
-<li><p>pic.width() 和 pic.height() ；</p>
-<p>分别用来访问图片的的宽度和高度。</p>
-</li>
-<li><p>pic.red(x,y)、pic.blue(x,y) 和 pic.green(x,y) ；</p>
-<p>分别用来获取像素(x,y)处红色原色值、蓝色原色值以及绿色原色值。</p>
-</li>
-<li><p>pic.set(x,y,red,green,bule)；</p>
-<p>将像素(x,y)处设定为自定义原色值，其中后3个参数均为0~255之间的数值。</p>
-</li>
-<li><p>Picture pic2(“queen2.png”);</p>
-<p>pic.add(pic2,num1,num2);</p>
-<p>这是在图片pic中添加图片pic2，其中num1，num2 分别为pic2相对于(0,0)这个位置的位移。</p>
-</li>
-<li><p>pic.save(“result.png”)；</p>
-<p>将操作后的图片保存。注：会在源文件中生成一个名为result，类型为png的图片。</p>
-</li>
-<li><p>Picture pic3(num1,num2,num3,num4,num5);</p>
-<p>不从源文件中加载图片，生成一张单色的图片，其中num1,num2 分别指定图片的宽度的高度，num3、num4、num5 分别代表着图片每一个像素的红、绿、蓝原色值。</p>
-</li>
-</ol>
-<h4 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h4><p>编写程序，将图片queen中的每一个像素的个原色值都变成其相反值。</p>
-<h4 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;picture.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">Picture <span class="title">pic</span><span class="params">(<span class="string">&quot;queen.png&quot;</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;pic.<span class="built_in">height</span>();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;pic.<span class="built_in">width</span>();j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> red=pic.<span class="built_in">red</span>(j,i);</span><br><span class="line">            <span class="keyword">int</span> green = pic.<span class="built_in">green</span>(j,i);</span><br><span class="line">            <span class="keyword">int</span> bule=pic.<span class="built_in">blue</span>(j,i);</span><br><span class="line">            pic.<span class="built_in">set</span>(j,i,<span class="number">255</span>-red,<span class="number">255</span>-green,<span class="number">255</span>-bule);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    pic.<span class="built_in">save</span>(<span class="string">&quot;upset_down.png&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//声明堆排序函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dui_sort</span><span class="params">(<span class="keyword">int</span> num[],<span class="keyword">int</span> num1)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//待排序数组</span></span><br><span class="line">    <span class="keyword">int</span> num[<span class="number">10</span>]= &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">2</span>&#125;;</span><br><span class="line">    <span class="comment">//数组大小</span></span><br><span class="line">    <span class="keyword">int</span> size1 = <span class="keyword">sizeof</span> num/<span class="number">4</span>;</span><br><span class="line">    <span class="comment">//每进入一次函数就将一个最大的值放入数列末尾</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=size1; i&gt;=<span class="number">2</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">dui_sort</span>(num,i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//打印数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;size1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; num[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dui_sort</span><span class="params">(<span class="keyword">int</span> num[],<span class="keyword">int</span> num1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//记录树的层数，从第0层开始</span></span><br><span class="line">    <span class="keyword">int</span> num2=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> num3=num1;</span><br><span class="line">    <span class="keyword">while</span>(num3&gt;=<span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        num3=num3/<span class="number">2</span>;</span><br><span class="line">        num2++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//记录倒数第二层非叶子节点的个数</span></span><br><span class="line">    <span class="keyword">int</span> num4=(num1-<span class="built_in">pow</span>(<span class="number">2</span>,num2))/<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">    <span class="comment">//记录要排到的位置数</span></span><br><span class="line">    <span class="keyword">int</span> num5=num1<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=num2<span class="number">-1</span>; i&gt;=<span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(i==num2<span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;num4; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> num6=<span class="built_in">pow</span>(<span class="number">2</span>,i)+j<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">if</span>(num[num6]&lt;num[num6*<span class="number">2</span>+<span class="number">1</span>])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">swap</span>(num[num6],num[num6*<span class="number">2</span>+<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(num[num6]&lt;num[num6*<span class="number">2</span>+<span class="number">1</span>+<span class="number">1</span>]&amp;&amp;num6*<span class="number">2</span>+<span class="number">1</span>+<span class="number">1</span>&lt;num1)<span class="comment">//可能只有一个子叶所以需要判断是否越界</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">swap</span>(num[num6],num[num6*<span class="number">2</span>+<span class="number">1</span>+<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="built_in">pow</span>(<span class="number">2</span>,i); j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> num6=<span class="built_in">pow</span>(<span class="number">2</span>,i)+j<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">if</span>(num[num6]&lt;num[num6*<span class="number">2</span>+<span class="number">1</span>])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">swap</span>(num[num6],num[num6*<span class="number">2</span>+<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(num[num6]&lt;num[num6*<span class="number">2</span>+<span class="number">1</span>+<span class="number">1</span>])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">swap</span>(num[num6],num[num6*<span class="number">2</span>+<span class="number">1</span>+<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">swap</span>(num[num5],num[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
         
@@ -195,7 +154,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8picture%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">如何使用picture类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Picture%E7%B1%BB%E5%9E%8B%E9%83%A8%E5%88%86%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">Picture类型部分成员函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">举例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">示例代码：</span></a></li></ol>
+      
     </div>
   </div>
 
@@ -204,7 +163,7 @@
         
         
           <blockquote id="copyright">
-              <p>原文链接: <a href="http://example.com/2021/06/04/C-操作图像中的像素/">http://example.com/2021/06/04/C-操作图像中的像素/</a></p>
+              <p>原文链接: <a href="http://example.com/2021/06/15/排序算法之堆排序/">http://example.com/2021/06/15/排序算法之堆排序/</a></p>
               <p>版权声明: 转载请注明出处.</p>
           </blockquote>
         
@@ -234,7 +193,7 @@
 
 
           
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-picture/" rel="tag">C++_picture</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li></ul>
 
           
     <div class="social-share">
@@ -249,15 +208,11 @@
         
 <nav id="article-nav">
   
-    <a href="/2021/06/04/C-%E6%B5%81/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          从宏观上看C++流
-        
-      </div>
-    </a>
   
+    <a href="/2021/06/13/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">排序算法之归并排序</div>
+    </a>
   
 </nav>
 
