@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>排序算法之希尔排序 | IT 日志</title>
+  <title>Android_studio学习框架 | IT 日志</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
   
@@ -85,7 +85,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-排序算法之希尔排序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-Android-studio学习框架" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -93,7 +93,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      排序算法之希尔排序
+      Android_studio学习框架
     </h1>
   
 
@@ -104,12 +104,12 @@
       
       <span class="article-date">
   <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-06-12T04:40:33.000Z" itemprop="datePublished">2021年06月12日</time>
+  <time class="dt-published" datetime="2021-08-23T07:47:23.000Z" itemprop="datePublished">2021年08月23日</time>
 </span>
       
   <div class="article-category">
     <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/C/">C++</a>
+    <a class="article-category-link" href="/categories/Android-studio/">Android studio</a>
   </div>
 
       
@@ -122,10 +122,10 @@
 
       
       
-<a href="/2021/06/12/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/#comments" class="article-comment-link">
+<a href="/2021/08/23/Android-studio%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/#comments" class="article-comment-link">
   
     
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/12/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" itemprop="commentCount"></span>
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/23/Android-studio%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/" itemprop="commentCount"></span>
     
     
     
@@ -140,25 +140,10 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>前面我们介绍了插入排序：从后向前与每个相邻元素进行比较和交换，下面来介绍一下插入排序的改进版——希尔排序：实现不相邻的两个元素进行比较和交换，但实质上也是插入排序。</p>
+        <p>​           终于学了如何开发一个app，并能实现开发一个小app的能力，为了整理一下这些天学的内容以及方便以后复习，就做了一个学习内容的框架。</p>
 <span id="more"></span>
 
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>插入排序效率低下是因为其移动元素每次只能移动一位，当排序元素的规模较大时，需要将元素一位一位地从一端移动到另一端。而如果我们能够让元素一次性地移动到较远的位置上，这样无疑就可以避免多次一位一位地移动操作。希尔排序正是基于此原理来优化、提高插入排序的效率。通过指定步长step，将原数组分为step个互相独立子数组，然后通过<strong>插入排序</strong>对这些子数组分别进行排序(即分组排序)，这时我们称其为step有序数组。当step很大时，我们就可以将元素一次性移动到很远的位置上，为下一次较小的step有序创造便利；不断缩小步长step，重复上述过程建立step有序数组，达到局部有序的目的。当step最终为1做最后一次step有序时，就是我们平常所熟悉的插入排序了，由于该数组已经多次被较大的step进行分组排序了，此时只需要较少次数的元素移动就可以实现整个数组全局有序</p>
-<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ol>
-<li>定义一个增量gap大小就等于数组的大小。</li>
-<li>进入一个while循环，条件是gap&gt;1,作用是当排序结束时跳出循环。</li>
-<li>定义一个增量递减的倍数n，可以是小于数组大小的任意值，一般是2，3，4，并执行：gap=gap/n+1；注意这里如果n&gt;2的话，要在后加一，如：gap=gap/n+1，这是为了防止gap为0而不能进入最后一次插入排序;但是如果n=2的话，一定不能加一，否则可能会陷入无限循环。</li>
-<li>通过增量将数组划分为若干个小数组。</li>
-<li>对每一个小数组进行插入排序。</li>
-</ol>
-<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
-<li>时间复杂度：希尔排序的时间复杂度与其增量gap有关，平均时间复杂度为：O(n*(logn)^2),以2为底。</li>
-<li>空间复杂度：O(1)</li>
-<li>稳定性：不稳定</li>
-</ul>
-<h3 id="动态演示"><a href="#动态演示" class="headerlink" title="动态演示"></a>动态演示</h3><img src="/2021/06/12/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/1.gif" class>
-
-<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//待排序数组</span></span><br><span class="line">    <span class="keyword">int</span> num[<span class="number">10</span>]=&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">    <span class="comment">//定义增量</span></span><br><span class="line">    <span class="keyword">int</span> gap=<span class="number">10</span>;</span><br><span class="line">    <span class="comment">//第一个循环:控制增量的，直到增量小于等于1时说明排序已经完成，跳出即可</span></span><br><span class="line">    <span class="keyword">while</span>(gap&gt;<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        gap=gap/<span class="number">3</span>+<span class="number">1</span>;<span class="comment">//10是数组的长度，2是每次增量减小的倍数，+1是为了防止最后增量为0而无法进行插入排序，但当增量减小的倍数为2时不能加1</span></span><br><span class="line">        <span class="comment">//第二个循环：通过增量将数组进行分组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;gap&amp;&amp;i+gap&lt;<span class="number">10</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//第三和第四个循环：对每一组进行插入排序</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+gap;j&lt;<span class="number">10</span>;j+=gap)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = num[j];</span><br><span class="line">                <span class="keyword">int</span> k;</span><br><span class="line">                <span class="keyword">for</span>(k=j-gap;k&gt;=i;k=k-gap)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(num[k]&gt;temp)</span><br><span class="line">                    &#123;</span><br><span class="line">                        num[k+gap]=num[k];</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                num[k+gap]=temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//打印数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; num[i]&lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="框架图"><a href="#框架图" class="headerlink" title="框架图"></a>框架图</h4><img src="/2021/08/23/Android-studio%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/1.png" class>
 
 
         
@@ -167,7 +152,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">实现步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%BC%94%E7%A4%BA"><span class="toc-number">4.</span> <span class="toc-text">动态演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">源码</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">框架图</span></a></li></ol>
     </div>
   </div>
 
@@ -176,7 +161,7 @@
         
         
           <blockquote id="copyright">
-              <p>原文链接: <a href="http://example.com/2021/06/12/排序算法之希尔排序/">http://example.com/2021/06/12/排序算法之希尔排序/</a></p>
+              <p>原文链接: <a href="http://example.com/2021/08/23/Android-studio学习框架/">http://example.com/2021/08/23/Android-studio学习框架/</a></p>
               <p>版权声明: 转载请注明出处.</p>
           </blockquote>
         
@@ -206,7 +191,7 @@
 
 
           
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-studio%E6%A1%86%E6%9E%B6/" rel="tag">Android studio框架</a></li></ul>
 
           
     <div class="social-share">
@@ -221,19 +206,10 @@
         
 <nav id="article-nav">
   
-    <a href="/2021/06/13/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          排序算法之归并排序
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/06/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/06/16/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">排序算法之插入排序</div>
+      <div class="article-nav-title">排序算法之计数排序</div>
     </a>
   
 </nav>

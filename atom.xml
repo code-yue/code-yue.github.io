@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-06-16T03:53:34.346Z</updated>
+  <updated>2021-08-23T08:03:30.798Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android_studio学习框架</title>
+    <link href="http://example.com/2021/08/23/Android-studio%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/"/>
+    <id>http://example.com/2021/08/23/Android-studio%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/</id>
+    <published>2021-08-23T07:47:23.000Z</published>
+    <updated>2021-08-23T08:03:30.798Z</updated>
+    
+    <content type="html"><![CDATA[<p>​           终于学了如何开发一个app，并能实现开发一个小app的能力，为了整理一下这些天学的内容以及方便以后复习，就做了一个学习内容的框架。</p><span id="more"></span><h4 id="框架图"><a href="#框架图" class="headerlink" title="框架图"></a>框架图</h4><img src="/2021/08/23/Android-studio%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/1.png" class>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;​           终于学了如何开发一个app，并能实现开发一个小app的能力，为了整理一下这些天学的内容以及方便以后复习，就做了一个学习内容的框架。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Android studio" scheme="http://example.com/categories/Android-studio/"/>
+    
+    
+    <category term="Android studio框架" scheme="http://example.com/tags/Android-studio%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>排序算法之计数排序</title>
