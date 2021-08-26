@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2021/08/26/%E7%B1%BB-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2021-08-26</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/2021/08/23/Android-studio%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/</loc>
     
     <lastmod>2021-08-23</lastmod>
@@ -130,7 +137,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2021-08-23</lastmod>
+    <lastmod>2021-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -138,35 +145,49 @@
   
   <url>
     <loc>http://example.com/tags/C-picture/</loc>
-    <lastmod>2021-08-23</lastmod>
+    <lastmod>2021-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/C-%E6%B5%81/</loc>
-    <lastmod>2021-08-23</lastmod>
+    <lastmod>2021-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86/</loc>
-    <lastmod>2021-08-23</lastmod>
+    <lastmod>2021-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2021-08-23</lastmod>
+    <lastmod>2021-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Android-studio%E6%A1%86%E6%9E%B6/</loc>
-    <lastmod>2021-08-23</lastmod>
+    <lastmod>2021-08-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E7%B1%BB/</loc>
+    <lastmod>2021-08-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -175,14 +196,21 @@
   
   <url>
     <loc>http://example.com/categories/C/</loc>
-    <lastmod>2021-08-23</lastmod>
+    <lastmod>2021-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/Android-studio/</loc>
-    <lastmod>2021-08-23</lastmod>
+    <lastmod>2021-08-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

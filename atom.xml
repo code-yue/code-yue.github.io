@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-08-23T08:03:30.798Z</updated>
+  <updated>2021-08-26T02:01:21.214Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>类-学习笔记</title>
+    <link href="http://example.com/2021/08/26/%E7%B1%BB-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://example.com/2021/08/26/%E7%B1%BB-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-08-26T01:57:39.000Z</published>
+    <updated>2021-08-26T02:01:21.214Z</updated>
+    
+    <content type="html"><![CDATA[<p>有关于类的一些需要注意的点，写下供以后进行复习。</p><span id="more"></span><ol><li>类中数据成员和成员函数定义所需要的所有头文件都要在头文件中声明，并且如果引用了标准库中的头文件，就要包含伪指令 using namespace std；。</li><li>只读函数在声明和定义的时候都需要加const关键字。</li><li>类中this是隐式参数的指针，不是隐式参数。</li><li>类中的成员函数包括 构造函数，析构函数，只读函数，只写函数和助手函数。</li><li>封装：隐藏实现细节的同时提供公共接口的过程。</li><li>骆驼命名法：名字以大写字母开头，名字中的每一个单词也已大写字母开头。</li><li>类的结尾要有分号。</li><li>重载：同一个函数名用于多个函数。</li><li>将平行向量转化为对象的向量。</li></ol>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;有关于类的一些需要注意的点，写下供以后进行复习。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="类" scheme="http://example.com/tags/%E7%B1%BB/"/>
+    
+    <category term="学习笔记" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Android_studio学习框架</title>
