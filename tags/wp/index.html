@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>排序算法之插入排序 | IT 日志</title>
+  <title>tag: wp | IT 日志</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
   
@@ -85,182 +85,47 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-排序算法之插入排序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
+
   
-    <h1 class="p-name article-title" itemprop="headline name">
-      排序算法之插入排序
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-06-11T14:46:27.000Z" itemprop="datePublished">2021年06月11日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/C/">C++</a>
-  </div>
-
-      
-        <span class="article-views">
-  <i class="fa fa-views"></i>
-  <i id="busuanzi_container_page_pv">
-      <i id="busuanzi_value_page_pv"></i>
-  </i>
-</span>
-
-      
-      
-<a href="/2021/06/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/#comments" class="article-comment-link">
   
     
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" itemprop="commentCount"></span>
     
-    
-    
-    
-    
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>前面介绍了冒泡排序，下面来介绍冒泡排序的姊妹排序——插入排序，虽然他们的原理不同，但是特性上面是完全相同的。</p>
-<span id="more"></span>
-
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，直到找到相应的位置插入。</p>
-<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ol>
-<li><p>将第一待排序序列第一个元素看做一个有序序列，把第二个元素到最后一个元素当成是未排序序列。</p>
-</li>
-<li><p>从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）</p>
-</li>
-</ol>
-<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ol>
-<li><p>时间复杂度</p>
-<ul>
-<li>最好情况：数组初始状态是正序的，此时的时间复杂度为O(n)。</li>
-<li>最坏情况: 文件的初始状态是逆序的，此时的时间复杂度为O(n^2)。</li>
-<li>综上：插入排序总的时间复杂度为 O(n^2)。</li>
-</ul>
-</li>
-<li><p>空间复杂度：无论什么情况都是O(1)。</p>
-</li>
-<li><p>稳定性: 稳定</p>
-</li>
-</ol>
-<h3 id="动态演示"><a href="#动态演示" class="headerlink" title="动态演示"></a>动态演示</h3><img src="/2021/06/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/1.gif" class>
-
-<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//待排序的数组</span></span><br><span class="line">    <span class="keyword">int</span> num[<span class="number">10</span>]=&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>&#125;;</span><br><span class="line">    <span class="comment">//逐个元素插入元素</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = num[i];<span class="comment">//存储要插入元素的值</span></span><br><span class="line">        <span class="keyword">int</span> k=i<span class="number">-1</span>;<span class="comment">//记录插入元素的索引</span></span><br><span class="line">        <span class="keyword">while</span>(k&gt;=<span class="number">0</span>&amp;&amp;num[k]&gt;temp)</span><br><span class="line">        &#123;</span><br><span class="line">            num[k+<span class="number">1</span>]=num[k];</span><br><span class="line">            k--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//插入元素</span></span><br><span class="line">        num[k+<span class="number">1</span>]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//打印数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; num[i]&lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
+    <section class="archives-wrap">
+      <div class="archive-title">
         
-            <div id="toc-article">
-                
-  <div class="widget-wrap" id="toc-wrap">
-    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
-    <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">实现步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%BC%94%E7%A4%BA"><span class="toc-number">4.</span> <span class="toc-text">动态演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">源码</span></a></li></ol>
-    </div>
-  </div>
-
-
-            </div>
-        
-        
-          <blockquote id="copyright">
-              <p>原文链接: <a href="http://example.com/2021/06/11/排序算法之插入排序/">http://example.com/2021/06/11/排序算法之插入排序/</a></p>
-              <p>版权声明: 转载请注明出处.</p>
-          </blockquote>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-    <div class="article-reward">
-        <a id="reward-btn" href="javascript:;">打赏</a>
-        <div id="reward-content">
-            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
-            <div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/wechat.jpg">
-                    <img class="er-code" src="/asset/3.jpg">
-                </div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/alipay.jpg">
-                    <img class="er-code" src="/asset/2.jpg">
-                </div>
-            </div>
-            <p class="reward-desc"></p>
-        </div>
-    </div>
-
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-        
-<nav id="article-nav">
-  
-    <a href="/2021/06/12/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          排序算法之希尔排序
+          <i class="fa fa-tag"></i>
+          wp
         
       </div>
+      <div class="archives">
+  
+  <ul class="archive-article archive-type-post">
+  <li class="archive-article-inner">
+    <a href="/2021/12/12/buu%E9%A2%98%E7%9B%AE%E5%8F%8A%E8%84%9A%E6%9C%AC%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E9%A1%B5/">
+      <time class="dt-published" datetime="2021-12-12T10:31:19.000Z" itemprop="datePublished">2021年12月12日</time>
+      | <span class="archive-article-title">buu题目及脚本——第一页</span>
     </a>
+  </li>
+</ul>
+
+
   
   
-    <a href="/2021/06/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">排序算法之选择排序</div>
+  <ul class="archive-article archive-type-post">
+  <li class="archive-article-inner">
+    <a href="/2021/12/12/%E9%87%91%E7%9B%BE%E6%9D%AFwp/">
+      <time class="dt-published" datetime="2021-12-12T10:25:31.000Z" itemprop="datePublished">2021年12月12日</time>
+      | <span class="archive-article-title">金盾杯wp</span>
     </a>
-  
-</nav>
-
-      
-      
-        
-
-  <section id="comments" class="vcomment"></section>
+  </li>
+</ul>
 
 
 
+  </div></section>
 
 
-
-
-      
-    </footer>
-  </div>
-</article>
 </section>
         
           <aside id="sidebar">
