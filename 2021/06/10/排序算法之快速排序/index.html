@@ -142,7 +142,6 @@
       
         <p>前面介绍了冒泡排序，其是交换排序的一种，而快速排序是另一种交换排序，下就来介绍快速排序。</p>
 <span id="more"></span>
-
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
 <h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ol>
 <li>设置两个变量 low、high，排序开始时：low=0，high=size-1(size为数组的大小)。</li>
@@ -165,8 +164,7 @@
 </li>
 <li><p>最坏情况：每次划分只能减少一个元素，快排就相当于是冒泡排序了，需要n-1次划分，此时时间复杂度为O(n^2)。</p>
 </li>
-<li><p>平均时间复杂度为：O(nlogn)(其中log以2为底)。</p>
-</li>
+<li>平均时间复杂度为：O(nlogn)(其中log以2为底)。</li>
 </ul>
 </li>
 <li><p>空间复杂度</p>
@@ -176,11 +174,7 @@
 </li>
 </ol>
 <h3 id="动态演示"><a href="#动态演示" class="headerlink" title="动态演示"></a>动态演示</h3><img src="/2021/06/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/1.gif" class>
-
 <h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//声明快排函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> num[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//定义一个要排序的数组</span></span><br><span class="line">    <span class="keyword">int</span> num[<span class="number">10</span>]=&#123;<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="comment">//调用快排的函数</span></span><br><span class="line">    <span class="built_in">quick_sort</span>(num,<span class="number">0</span>,<span class="number">9</span>);</span><br><span class="line">    <span class="comment">//打印排序之后的结果</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; num[i]&lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义快排函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> num[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="comment">//将基准元素存储在temp中</span></span><br><span class="line">    temp = num[low];</span><br><span class="line">    <span class="comment">//将low和high的值赋值给i,j,因为马上的递归函数需要用到low和high</span></span><br><span class="line">    <span class="keyword">int</span> i=low;</span><br><span class="line">    <span class="keyword">int</span> j= high;</span><br><span class="line">    <span class="comment">//进入循环直到i&lt;j时跳出循环,递归结束</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//进入循环直到i=j时跳出循环，代表一个基准值放置在正确的位置</span></span><br><span class="line">        <span class="keyword">while</span>(i!=j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//进入循环直到有一个数与基准数相比相对位置不对应跳出循环</span></span><br><span class="line">            <span class="keyword">while</span>(i!=j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(num[j]&lt;temp)</span><br><span class="line">                &#123;</span><br><span class="line">                    num[i]=num[j];</span><br><span class="line">                    i++;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    j--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//进入循环，前一个循环从后往前找，这个循环从前向后找</span></span><br><span class="line">            <span class="keyword">while</span>(i!=j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(num[i]&gt;temp)</span><br><span class="line">                &#123;</span><br><span class="line">                    num[j]=num[i];</span><br><span class="line">                    j--;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将基准元素放入指定位置</span></span><br><span class="line">        num[i]=temp;</span><br><span class="line">        <span class="comment">//进入递归，直到所有元素都排列好</span></span><br><span class="line">        <span class="built_in">quick_sort</span>(num,low,i<span class="number">-1</span>);</span><br><span class="line">        <span class="built_in">quick_sort</span>(num,j+<span class="number">1</span>,high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
 
         
             <div id="toc-article">
@@ -286,6 +280,10 @@
       <ul>
         
           <li>
+            <a href="/2022/01/12/RAS%E5%9F%BA%E7%A1%80/">RSA基础</a>
+          </li>
+        
+          <li>
             <a href="/2022/01/11/java%E7%9A%84%E7%89%B9%E7%82%B9%E5%92%8C%E5%AF%B9java%E5%B8%B8%E8%A7%81%E8%AF%AF%E8%A7%A3/">java的特点和对java常见误解</a>
           </li>
         
@@ -301,10 +299,6 @@
             <a href="/2021/12/12/%E9%87%91%E7%9B%BE%E6%9D%AFwp/">金盾杯wp</a>
           </li>
         
-          <li>
-            <a href="/2021/12/09/%E8%BD%AC%E8%BD%AE%E6%9C%BA%E5%8A%A0%E5%AF%86/">转轮机加密</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -315,7 +309,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android-studio%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">Android studio框架</a> <a href="/tags/C-picture/" style="font-size: 12.5px;">C++_picture</a> <a href="/tags/C-%E6%B5%81/" style="font-size: 17.5px;">C++流</a> <a href="/tags/Crypto/" style="font-size: 10px;">Crypto</a> <a href="/tags/Crypto%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/" style="font-size: 10px;">Crypto做题总结</a> <a href="/tags/wp/" style="font-size: 15px;">wp</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">学习笔记</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 20px;">排序算法</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">文件加密</a> <a href="/tags/%E7%B1%BB/" style="font-size: 10px;">类</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a>
+      <a href="/tags/Android-studio%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">Android studio框架</a> <a href="/tags/C-picture/" style="font-size: 12.5px;">C++_picture</a> <a href="/tags/C-%E6%B5%81/" style="font-size: 17.5px;">C++流</a> <a href="/tags/Crypto/" style="font-size: 10px;">Crypto</a> <a href="/tags/Crypto%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/" style="font-size: 10px;">Crypto做题总结</a> <a href="/tags/RSA/" style="font-size: 10px;">RSA</a> <a href="/tags/wp/" style="font-size: 15px;">wp</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">学习笔记</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 20px;">排序算法</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">文件加密</a> <a href="/tags/%E7%B1%BB/" style="font-size: 10px;">类</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a>
     </div>
   </div>
 
@@ -324,7 +318,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android-studio/">Android studio</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto`</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android-studio/">Android studio</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto`</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -334,7 +328,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年12月</a><span class="archive-list-count">22</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年12月</a><span class="archive-list-count">22</span></li></ul>
     </div>
   </div>
 
@@ -344,7 +338,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-studio%E6%A1%86%E6%9E%B6/" rel="tag">Android studio框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-picture/" rel="tag">C++_picture</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E6%B5%81/" rel="tag">C++流</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crypto/" rel="tag">Crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crypto%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/" rel="tag">Crypto做题总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wp/" rel="tag">wp</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86/" rel="tag">文件加密</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB/" rel="tag">类</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-studio%E6%A1%86%E6%9E%B6/" rel="tag">Android studio框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-picture/" rel="tag">C++_picture</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E6%B5%81/" rel="tag">C++流</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crypto/" rel="tag">Crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crypto%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/" rel="tag">Crypto做题总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSA/" rel="tag">RSA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wp/" rel="tag">wp</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86/" rel="tag">文件加密</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB/" rel="tag">类</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -514,6 +508,17 @@ setInterval("createtime()",250);
 
 
 
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+  <script src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML" async type="text/javascript"></script>
 
   </div>
 </body>
