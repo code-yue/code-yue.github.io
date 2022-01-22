@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>排序算法之归并排序 | IT 日志</title>
+  <title>低解密指数攻击（e很大） | IT 日志</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
   
@@ -85,7 +85,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-排序算法之归并排序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-低解密指数攻击（e很大）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -93,7 +93,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      排序算法之归并排序
+      低解密指数攻击（e很大）
     </h1>
   
 
@@ -104,12 +104,12 @@
       
       <span class="article-date">
   <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-06-13T12:40:59.000Z" itemprop="datePublished">2021年06月13日</time>
+  <time class="dt-published" datetime="2022-01-22T09:36:14.000Z" itemprop="datePublished">2022年01月22日</time>
 </span>
       
   <div class="article-category">
     <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/C/">C++</a>
+    <a class="article-category-link" href="/categories/Crypto/">Crypto</a>
   </div>
 
       
@@ -122,10 +122,10 @@
 
       
       
-<a href="/2021/06/13/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/#comments" class="article-comment-link">
+<a href="/2022/01/22/%E4%BD%8E%E8%A7%A3%E5%AF%86%E6%8C%87%E6%95%B0%E6%94%BB%E5%87%BB%EF%BC%88e%E5%BE%88%E5%A4%A7%EF%BC%89/#comments" class="article-comment-link">
   
     
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/13/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" itemprop="commentCount"></span>
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/01/22/%E4%BD%8E%E8%A7%A3%E5%AF%86%E6%8C%87%E6%95%B0%E6%94%BB%E5%87%BB%EF%BC%88e%E5%BE%88%E5%A4%A7%EF%BC%89/" itemprop="commentCount"></span>
     
     
     
@@ -140,38 +140,34 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>排序算法的10大排序前面已经介绍了5个，下来介绍第6中排序算法——归并排序。</p>
+        <p>RSA低解密指数攻击</p>
 <span id="more"></span>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>归并排序是创建在归并操作上的一种有效的排序算法。算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。归并排序思路简单，速度仅次于快速排序，为稳定排序算法，一般用于对总体无序，但是各子项相对有序的数列。</p>
-<p>归并排序是用分治思想，分治模式在每一层递归上有三个步骤：</p>
-<ul>
-<li>分解：将n个元素分成个含n/2个元素的子序列。</li>
-<li>解决：用合并排序法对两个子序列递归的排序。</li>
-<li>合并：合并两个已排序的子序列已得到排序结果。</li>
-</ul>
-<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ol>
-<li><p>进入归并排序函数merge-sort(int num[],int low,int high,int mid),其中low是数组起始值，high是数组最大值，mid是数组大小除以2。</p>
-</li>
-<li><p>设置递归开始条件，即下代码的if(low&lt;high)。</p>
-</li>
-<li><p>实行分而治之的思想，将数组一分为二，分别执行merge-sort函数，直到剩下一个数，不可再分。</p>
-</li>
-<li><p>对之前一份为二的数组进行化二为一进行排序合并。</p>
-<p>排序合并方法：</p>
-<ul>
-<li>定义一个向量。</li>
-<li>将两个数组从小到大依次添加在向量后面。</li>
-<li>将向量的值赋给原始数组的指定位置。</li>
-</ul>
+<h2 id="攻击原理"><a href="#攻击原理" class="headerlink" title="攻击原理"></a>攻击原理</h2><p>使用wiener攻击(基于连分数的特殊类型攻击)：</p>
+<ol>
+<li>需要满足的条件：</li>
+</ol>
+<script type="math/tex; mode=display">
+d<\frac 13 n^{\frac 14}\\
+q<p<2q</script><ol>
+<li><p>攻击思路</p>
+<p>在RSA中:</p>
+<script type="math/tex; mode=display">
+n=p*q\\
+\psi(n)=(p-1)(q-1)=p*q-(p+q)+1</script><p>因为p,q很大，且p，q相差不大，所以$p*q&gt;&gt;p+q$,所以$\psi(n)\approx n$。</p>
+<p>又因为</p>
+<script type="math/tex; mode=display">
+e*d \equiv1mod\psi(n)</script><p>所以有</p>
+<script type="math/tex; mode=display">
+e*d-1=k*\psi(n)</script><p>两边同时除以$d*\psi(n)$得</p>
+<script type="math/tex; mode=display">
+\frac e{\psi(n)}-\frac 1{d*\psi(n)}=\frac kd</script><p>因为$d\psi(n)$很大，所以$\frac 1{d\psi(n)}\approx0$,又因为$\psi(n)\approx n$，所以有</p>
+<script type="math/tex; mode=display">
+\frac en\approx\frac kd</script><p>由于e和n是公钥我们知道，所以知道$\frac en$后，通过计算$\frac en$的连分数展开，依次计算出这个分数的每一个渐进分数，由于$\frac en$略大于$\frac kd$,wiener证明了，该攻击可以精确的覆盖$\frac kd$，所以计算每一个渐进分数，直到满足k，d所满足的条件，得到k，d。由</p>
+<script type="math/tex; mode=display">
+\psi(n)=\frac {e*d-1}k</script><p>可以求出$\psi(n)$,然后通过解韦达定理得到p，q，如果满足$p*q=n$,则成功分解n。</p>
 </li>
 </ol>
-<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
-<li>时间复杂度：不管元素在什么情况下都要做这些步骤，所以花销的时间是不变的，所以该算法的最优时间复杂度和最差时间复杂度及平均时间复杂度都是一样的为：O( nlogn )，以2为底。</li>
-<li>空间复杂度：O(n)。</li>
-<li>稳定性：稳定</li>
-</ul>
-<h3 id="动态演示"><a href="#动态演示" class="headerlink" title="动态演示"></a>动态演示</h3><img src="/2021/06/13/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1.gif" class>
-<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//函数声明</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> num[],<span class="keyword">int</span> low,<span class="keyword">int</span> high,<span class="keyword">int</span> mid)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//待排序数组</span></span><br><span class="line">    <span class="keyword">int</span> num[<span class="number">10</span>]= &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="comment">//进入归并排序函数,其中4为数组大小除以2</span></span><br><span class="line">    <span class="built_in">merge_sort</span>(num,<span class="number">0</span>,<span class="number">9</span>,<span class="number">4</span>);</span><br><span class="line">    <span class="comment">//打印排序好的数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; num[i]&lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//函数定义</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> num[],<span class="keyword">int</span> low,<span class="keyword">int</span> high,<span class="keyword">int</span> mid)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//不满足if下的条件递归开始</span></span><br><span class="line">    <span class="keyword">if</span>(low&lt;high)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">merge_sort</span>(num,low,mid,(low+mid)/<span class="number">2</span>);</span><br><span class="line">        <span class="built_in">merge_sort</span>(num,mid+<span class="number">1</span>,high,(mid+<span class="number">1</span>+high)/<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">int</span> num1 = low;</span><br><span class="line">        <span class="keyword">int</span> num2 = mid+<span class="number">1</span>;</span><br><span class="line">        <span class="comment">//将数组中从low到high的数进行排序并存放在num4的向量之中</span></span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; num4;</span><br><span class="line">        <span class="keyword">while</span>(num1&lt;=mid&amp;&amp;num2&lt;=high)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(num[num1]&lt;=num[num2])</span><br><span class="line">            &#123;</span><br><span class="line">                num4.<span class="built_in">push_back</span>(num[num1]);</span><br><span class="line">                num1++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                num4.<span class="built_in">push_back</span>(num[num2]);</span><br><span class="line">                num2++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(num1&gt;mid)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=num2; i&lt;=high; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                num4.<span class="built_in">push_back</span>(num[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=num1; i&lt;=mid; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                num4.<span class="built_in">push_back</span>(num[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将从low到high的数排序完存入数组中</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=low; i&lt;=high; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            num[i]=num4[i-low];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="攻击脚本"><a href="#攻击脚本" class="headerlink" title="攻击脚本"></a>攻击脚本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2 RSA 低解密指数攻击 e很大，使用wiener攻击求d</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">transform</span>(<span class="params">x, y</span>):</span>  <span class="comment"># 使用辗转相处将分数 x/y 转为连分数的形式</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">while</span> y:</span><br><span class="line">        res.append(x // y)</span><br><span class="line">        x, y = y, x % y</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">continued_fraction</span>(<span class="params">sub_res</span>):</span></span><br><span class="line">    numerator, denominator = <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> sub_res[::-<span class="number">1</span>]:  <span class="comment"># 从sublist的后面往前循环</span></span><br><span class="line">        denominator, numerator = numerator, i * numerator + denominator</span><br><span class="line">    <span class="keyword">return</span> denominator, numerator  <span class="comment"># 得到渐进分数的分母和分子，并返回</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 求解每个渐进分数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sub_fraction</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    res = transform(x, y)</span><br><span class="line">    res = <span class="built_in">list</span>(<span class="built_in">map</span>(continued_fraction, (res[<span class="number">0</span>:i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(res)))))  <span class="comment"># 将连分数的结果逐一截取以求渐进分数</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_pq</span>(<span class="params">a, b, c</span>):</span>  <span class="comment"># 由p+q和pq的值通过维达定理来求解p和q</span></span><br><span class="line">    par = gmpy2.isqrt(b * b - <span class="number">4</span> * a * c)  <span class="comment"># 由上述可得，开根号一定是整数，因为有解</span></span><br><span class="line">    x1, x2 = (-b + par) // (<span class="number">2</span> * a), (-b - par) // (<span class="number">2</span> * a)</span><br><span class="line">    <span class="keyword">return</span> x1, x2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wienerAttack</span>(<span class="params">e, n</span>):</span></span><br><span class="line">    <span class="keyword">for</span> (d, k) <span class="keyword">in</span> sub_fraction(e, n):  <span class="comment"># 用一个for循环来注意试探e/n的连续函数的渐进分数，直到找到一个满足条件的渐进分数</span></span><br><span class="line">        <span class="keyword">if</span> k == <span class="number">0</span>:  <span class="comment"># 可能会出现连分数的第一个为0的情况，排除</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> (e * d - <span class="number">1</span>) % k != <span class="number">0</span>:  <span class="comment"># ed=1 (mod φ(n)) 因此如果找到了d的话，(ed-1)会整除φ(n),也就是存在k使得(e*d-1)//k=φ(n)</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        phi = (e * d - <span class="number">1</span>) // k  <span class="comment"># 这个结果就是 φ(n)</span></span><br><span class="line">        px, qy = get_pq(<span class="number">1</span>, n - phi + <span class="number">1</span>, n)</span><br><span class="line">        <span class="keyword">if</span> px * qy == n:</span><br><span class="line">            p, q = <span class="built_in">abs</span>(<span class="built_in">int</span>(px)), <span class="built_in">abs</span>(<span class="built_in">int</span>(qy))  <span class="comment"># 可能会得到两个负数，负负得正未尝不会出现</span></span><br><span class="line">            d = gmpy2.invert(e, (p - <span class="number">1</span>) * (q - <span class="number">1</span>))  <span class="comment"># 求ed=1 (mod  φ(n))的结果，也就是e关于 φ(n)的乘法逆元d</span></span><br><span class="line">            <span class="keyword">return</span> d</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;该方法不适用&quot;</span>)</span><br><span class="line"></span><br><span class="line">n= </span><br><span class="line">e= </span><br><span class="line">d = wienerAttack(e, n)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;d=&quot;</span>, d)</span><br></pre></td></tr></table></figure>
 
         
             <div id="toc-article">
@@ -179,7 +175,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">实现步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%BC%94%E7%A4%BA"><span class="toc-number">4.</span> <span class="toc-text">动态演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">源码</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">攻击原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E8%84%9A%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">攻击脚本</span></a></li></ol>
     </div>
   </div>
 
@@ -188,7 +184,7 @@
         
         
           <blockquote id="copyright">
-              <p>原文链接: <a href="http://example.com/2021/06/13/排序算法之归并排序/">http://example.com/2021/06/13/排序算法之归并排序/</a></p>
+              <p>原文链接: <a href="http://example.com/2022/01/22/低解密指数攻击（e很大）/">http://example.com/2022/01/22/低解密指数攻击（e很大）/</a></p>
               <p>版权声明: 转载请注明出处.</p>
           </blockquote>
         
@@ -218,7 +214,7 @@
 
 
           
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RSA/" rel="tag">RSA</a></li></ul>
 
           
     <div class="social-share">
@@ -233,19 +229,10 @@
         
 <nav id="article-nav">
   
-    <a href="/2021/06/15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%A0%86%E6%8E%92%E5%BA%8F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          排序算法之堆排序
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/06/12/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/01/21/PS%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7%E8%AE%B2%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">排序算法之希尔排序</div>
+      <div class="article-nav-title">PS基本工具</div>
     </a>
   
 </nav>
