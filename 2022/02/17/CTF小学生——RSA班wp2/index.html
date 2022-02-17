@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>CTF小学生——RSA班wp2 | IT 日志</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="IT 日志" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">IT 日志</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">没有比脚更长的路，走过去，前面是个天！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 联系</a>
+        
+          <a class="main-nav-link" href="/atom.xml"><i class="fa fa-rss"></i> 订阅</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CTF小学生——RSA班wp2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      CTF小学生——RSA班wp2
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-02-17T06:18:59.000Z" itemprop="datePublished">2022年02月17日</time>
+</span>
+      
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/02/17/CTF%E5%B0%8F%E5%AD%A6%E7%94%9F%E2%80%94%E2%80%94RSA%E7%8F%ADwp2/#comments" class="article-comment-link">
+  
+    
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/02/17/CTF%E5%B0%8F%E5%AD%A6%E7%94%9F%E2%80%94%E2%80%94RSA%E7%8F%ADwp2/" itemprop="commentCount"></span>
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>wp</p>
+<span id="more"></span>
+<p>题目：rsa_14</p>
+<p>解答:  已知n，e，c，dp，直接使用脚本求flag</p>
+<p>代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line">n= <span class="number">22622953499906408301564967921245988860495391097132954220274432924287509085632417945770881691534975145091374242390427640088367167203579325929612016723243658261593025738254367644091603118090370975169770127462281455311168276705797581236756566556572477147794482576566576141503657366877706216822051348815093952824935126554144616168117998226546298989358973835686535936849349204968416839514589022517798087249227968029567878985549747691248450050900456070085755111883456285843067740064987642442265366446045841262726264326834028291726094139315980161873887433830833454445599669910399735340574524109558630513082823400621144454351</span></span><br><span class="line">e= <span class="number">65537</span></span><br><span class="line">c= <span class="number">469722654129671419249759522951904591667490211597089754628487076348562605615284355442799382577011350223484863274785594845261822294849547236041417367128695661795868225558049849940969387805053378233945487237026625762800225165430228884868681682886651471380372547431200184327293846958033983382179623067806485162201079574837090290662923491693441026067580453795233723008995575278125426502251786591238435141115672755813724389532148907336492040829080851823787879326475426928069825609696935156088233034235751099793215905063550820628171197918871238376618291835524535363337134321757043740849310613185143435442464034252256136947</span></span><br><span class="line">dp= <span class="number">126729618715997639432376012471064242072409613989447605497725787230926131930047985649208493373747981708515084950424544560607536523739481248536263970683258477808489883464951901490743860000504246086678359257162357254217610750532553294000611257291925400498830519491741364527898680055532286984211081076338931327137</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, e):</span><br><span class="line">    <span class="keyword">if</span> (e * dp % x == <span class="number">1</span>):</span><br><span class="line">        p = (e * dp - <span class="number">1</span>) // x + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> (n % p != <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        q = n // p</span><br><span class="line">        phin = (p - <span class="number">1</span>) * (q - <span class="number">1</span>)</span><br><span class="line">        d = gmpy2.invert(e, phin)</span><br><span class="line">        m = <span class="built_in">pow</span>(c, d, n)</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">len</span>(<span class="built_in">hex</span>(m)[<span class="number">2</span>:]) % <span class="number">2</span> == <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;m:&quot;</span>, m)</span><br><span class="line">        <span class="built_in">print</span>(libnum.n2s(<span class="built_in">int</span>(m)))</span><br></pre></td></tr></table></figure>
+<hr>
+<p>题目：RSA_15</p>
+<p>解答：已知p,q,c,dp,dq，带入脚本求得flag</p>
+<p>代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line">p= <span class="number">112454994630978850005784651276022327545786198205744597431888680937657203192943</span></span><br><span class="line">q= <span class="number">111081771780978300442208201256251933100607227308819156491182881723714968913833</span></span><br><span class="line">c= <span class="number">7847140580627012782899798457736961376953768684667159008470556786390887805253326211691923724846808704462396746105331991924048819814322540306282164012066426</span></span><br><span class="line">dp= <span class="number">99016059099144522019375365089687785694029213535292918424815544402513220169503</span></span><br><span class="line">dq= <span class="number">79504900574184798493105575420403885224379864982754477219462523963780735261625</span></span><br><span class="line"></span><br><span class="line">invq=gmpy2.invert(q,p)</span><br><span class="line">mp=<span class="built_in">pow</span>(c,dp,p)</span><br><span class="line">mq=<span class="built_in">pow</span>(c,dq,q)</span><br><span class="line">m=((mp-mq)*invq%p)*q+mq</span><br><span class="line"><span class="built_in">print</span>(m)</span><br><span class="line"><span class="built_in">print</span>(libnum.n2s(<span class="built_in">int</span>(m)))</span><br></pre></td></tr></table></figure>
+<hr>
+<p>题目：RSA_16</p>
+<p>解答：通过yafu分解n可知n是某素数的5次方，通过欧拉函数定理求得n的欧拉函数值，即phi，得到flag</p>
+<p>代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line">n= <span class="number">24090704838485320092322602381433113998549491255884266387675228929661104335500411198637928025660996430319332941004040599396998234228244782303357297973137930526505489726115260523310511218709466132734290380881163955161225457364375241182423158684922361439555422326120328133588500102913773661266808325619034117428588147006907657756318674847307691315077012529837425655081122924789717051817547851005534496378358099420535561566073404733903281708969861402722313932576238811896701757123799634332216554086749941045956406802471674031944558913714990838086806396503547587896668889448877787128717078534093031525842561899729308823124832044199410217169735469224432542618693916399121293260293185310206776155217396940245472443313953985052989506641484804269835655950721932515156631880216443</span></span><br><span class="line">e= <span class="number">65537</span></span><br><span class="line">c= <span class="number">4644692044652159435824271269188149877191463739428505800552271160405169256688524376059318365826281434840310221997229754973778724418987980440341270686332667226078120978326105359289063570833817421216507957905303736889805936005004450684613091300319138800693741893618264241268661031157574584193673068534877291120825428318673498993334115269043893347607706429720486411605530004387437787775015099350192774546635451473835741062999624582951642205695330470935474403770491104296455303487414392560417505110011204285904941964895708840331681754455406209522192714176572299696109331233432919143365691231618894725659346560911188282377099473664930243190978118442970824453139977801843431119816228255364416557236747200455405887287572620725727247354320774485121369770634224919966258978988036</span></span><br><span class="line">p= <span class="number">7522633459543261699928061990854146313832534923510670277767922552283252008995826136321031523873848172725576684552966982932229269010055777902040181800721643</span></span><br><span class="line">phi = n-p**<span class="number">4</span></span><br><span class="line">d = gmpy2.invert(e,phi)</span><br><span class="line">m = <span class="built_in">pow</span>(c,d,n)</span><br><span class="line"><span class="built_in">print</span>(libnum.n2s(<span class="built_in">int</span>(m)))</span><br></pre></td></tr></table></figure>
+<hr>
+<p>题目：RSA_8</p>
+<p>解答：通过yafu分解n可知n本身是一个素数，通过欧拉函数定理求得n的欧拉函数值，即phi，得到flag</p>
+<p>代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line">n= <span class="number">161670795418661108941395547760068053355832555077779027853700140442876298077926786030806243269042521234383793929910836023913994987010924339006536693866763078849189869497871752489277315727669547511079303136326388638480680630822677173084810848784554433394382029956739707395702556105138001868786944077871569844771</span></span><br><span class="line">c= <span class="number">91652340468387584012845155237237896957786753396661434559421169499111938419733760364914054180181470453332534789456757372866493406817246725731113863637159054175158914882334950110118713886213759125279941357012004180349611604118066085014934218543579248275421019690815403585470855502464076600672369539603525850924</span></span><br><span class="line">e= <span class="number">65537</span></span><br><span class="line">phi = n-<span class="number">1</span></span><br><span class="line">d =gmpy2.invert(e,phi)</span><br><span class="line">m = <span class="built_in">pow</span>(c,d,n)</span><br><span class="line"><span class="built_in">print</span>(libnum.n2s(<span class="built_in">int</span>(m)))</span><br></pre></td></tr></table></figure>
+<hr>
+<p>题目:rsa_10</p>
+<p>解答: 给了两组c，n，p，q，通过中国剩余定理求得结果为c，n1*n2为n，求解得到flag</p>
+<p>代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line">p1= <span class="number">241529374856419543994843741620715478233</span></span><br><span class="line">q1= <span class="number">329891612475502969315412700917758756573</span></span><br><span class="line">p2= <span class="number">179415062328238613586720079938194290751</span></span><br><span class="line">q2= <span class="number">281209161331996176661322999324485217597</span></span><br><span class="line">n1= <span class="number">79678514931584446837886795964984740987618425126262080131520484181733127175509</span></span><br><span class="line">n2= <span class="number">50453159207651801862952938090505477143503284591035016948403490994601319545347</span></span><br><span class="line">c1= <span class="number">10906371165492800616190805676717306177005704888515733402096006986355132032250</span></span><br><span class="line">c2= <span class="number">47055855052437161522184969745110429012879528443871661682592147046669796586664</span></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">n = n1*n2</span><br><span class="line">n1_ni = gmpy2.invert(n2,n1)</span><br><span class="line">n2_ni = gmpy2.invert(n1,n2)</span><br><span class="line">c = (n2*n1_ni*c1+n1*n2_ni*c2)%n</span><br><span class="line">phi = (p1-<span class="number">1</span>)*(p2-<span class="number">1</span>)*(q1-<span class="number">1</span>)*(q2-<span class="number">1</span>)</span><br><span class="line">d = gmpy2.invert(e,phi)</span><br><span class="line">m = <span class="built_in">pow</span>(c,d,n)</span><br><span class="line"><span class="built_in">print</span>(libnum.n2s(<span class="built_in">int</span>(m)))</span><br></pre></td></tr></table></figure>
+<hr>
+<p>题目：rsa_13</p>
+<p>解答：给了两组c和n，并且n1，n2有最大公约数p，由此求得q1，q2，求得flag</p>
+<p>代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line">n1= <span class="number">14344966075668457197926805093252019643096573510969721322719333921005737087381900449540855412424548701204134893993421731511948833767143851141078209382285846501386535725301259909239487164541050781598400430159674920170854404496253398222187307367926322625492497171740002969789815008039987485265892529966452609000393813395779113860224081603944565240880582129475822907507399743470085845133711696533090310948349344084563385664363625995999399255547593760021153639514720877652246066221504678395471466612295627656516850262088529244725814466732348833167839822545350219641690764981001428685344377698209527688737137187300399652993</span></span><br><span class="line">n2= <span class="number">12354218348882658855939557374675440240130593637412960903022784670883099080512624736064231265886849271910351937451997751749093644637238859633012706230887428376122240805168054483532576336852668163683367625468673502957503469509123739755819238781219308756042088817872420155442438195380803116150498980766272244743798236039791910368557658313836740247547559284129302204970113950049895139613500250641481434700366895302374051200743877172702615189237557067101522920447615629272986158643661393610029180590415625821891554368097074431230829448921269825593886700360922071375933729554358494473990274497958858233048122738508242423439</span></span><br><span class="line">c1= <span class="number">3691123354676066697059437937998979583921581870731150079375228838089668944155347573115895745939257000857077746797136413811508634456041342500337302101225465437119807883492455873112323783750970718926005237215996705821476132706795935577193711973896496979170206973337515061654337654274989697617761256418417804735475939505284666094122467326381674631123530317439987013961787043442129186254743721364414447230567446822751926033047452822024681275085831713997686837779667260888016072279588480296674703292539294133901503225011837599317942181453227103095922082421095286788644523456206687517063265624595424684296819286062613760042</span></span><br><span class="line">c2= <span class="number">5938408686309543013293741535567205151131688865994815122696735470416646965603186344765655319536668785559696396104442531438099421602193304800760866674863437267379695326984063895846835762801125090313445489510683263350964708721907377863520679697909959118156916287172182350863938539461166083625073905275280319815502103888903393913834228224181613416918191464536553417181893783896959345196250270792673371830038465845317178867867078669131493698960171589833480768462627600224827986249429611594755180062966252940786732981155206917654348842803640264421695660795812804373210578066663145314490990520854537552802784407185492236744</span></span><br><span class="line">e=<span class="number">65537</span></span><br><span class="line">p = gmpy2.gcd(n1,n2)</span><br><span class="line">q1 = n1//p</span><br><span class="line">q2 = n2//p</span><br><span class="line">phi1 = (p-<span class="number">1</span>)*(q1-<span class="number">1</span>)</span><br><span class="line">phi2 = (p-<span class="number">1</span>)*(q2-<span class="number">1</span>)</span><br><span class="line">d1 = gmpy2.invert(e,phi1)</span><br><span class="line">d2 = gmpy2.invert(e,phi2)</span><br><span class="line">m1 = <span class="built_in">pow</span>(c1,d1,n1)</span><br><span class="line">m2 = <span class="built_in">pow</span>(c2,d2,n2)</span><br><span class="line"><span class="built_in">print</span>(libnum.n2s(<span class="built_in">int</span>(m1)))</span><br><span class="line"><span class="built_in">print</span>(libnum.n2s((<span class="built_in">int</span>(m2))))</span><br></pre></td></tr></table></figure>
+<hr>
+<p>题目:rsa18</p>
+<p>解答：给的e和phi不互素，找到e与phi的最大公因数gcd，将e/gcd当作新的e，求得m再开gcd次方得到flag</p>
+<p>代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"></span><br><span class="line">p= <span class="number">179604728901172884984546444098336951299567226578637956867234955273321950834253763455974908411986208869587996429208317419915541879829705695083899455584410844347380529355478252408255665437124675873347322572413775553300676365369297224009959989495411452768654413529438720408670663273782756277912404468420962465297</span></span><br><span class="line">q= <span class="number">173812808579656497809794049676143957530187304874982238246182308756968315404682483726756662221017110382295012325999009417177266772549812121470834293121487863992068948158282535382396055587629081656872380987341085769570778778669919312677737719340626660293905750991112916961702537446688565242955846309244801936781</span></span><br><span class="line">e= <span class="number">298</span></span><br><span class="line">c= <span class="number">10877632494141323696706173060086601121355884259234525310108848169016343902980600845727568845840567726459597646880426553618145392261925420045090468239137708021360087031552255008560875384082156512208224524860549260224921452504096206527857951948234851544501022714642000242331900097894216267245750310618972277142398661493280224445067919972096475478247725627682511339310203665988973259583184028008064493780090233902782416178723036468013857367850280612841182686428704717939119216042691392502115511334107971111076296702241411286865983278698999230209388059621673227839004725621075278503145071860800081826179749895009884713055</span></span><br><span class="line"></span><br><span class="line">phi = (p-<span class="number">1</span>)*(q-<span class="number">1</span>)</span><br><span class="line">gcd = gmpy2.gcd(phi,e)</span><br><span class="line">e = e//gcd</span><br><span class="line">d = gmpy2.invert(e,phi)</span><br><span class="line">m = <span class="built_in">pow</span>(c,d,p*q)</span><br><span class="line">m = gmpy2.iroot(m,<span class="number">2</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(libnum.n2s(<span class="built_in">int</span>(m)))</span><br></pre></td></tr></table></figure>
+<hr>
+<p>题目:rsa20</p>
+<p>解答：e=2</p>
+<p>代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line">p= <span class="number">122148491423639510060358520247326001415378756960123061340205031810235511253496233656913937819798161138467669802058794431258364815048474953088507274866256378381409951959750689384174071189227238884101846565741054406768547752624840426474750191838000550894022573930877154168207130498171735566553517132962856855111</span></span><br><span class="line">q= <span class="number">142755578574113482683875150345372577363277111983736520709390192691018628850982550669601255375276434229753811206425659062428721779518168263620205357414671725791655926862817648459031593998074454782619982558995296893592414687691579260619395713067522690127560706829880215532804483197706245921702087884445862908311</span></span><br><span class="line">n= <span class="number">17437378565136796938110429615460109306513763994515441361700826128854509816577500859330683620324942811798278054720514628441058958796253590667597639564320226081313246692273260392020172668686109508486701867559622051759183126919749044186432732690010275229298964648509739981889494014237283495021762548037876030067888443161621760780099178071080783305102758292721482026470985598146884711243792995042285939445306378914554641176698591510703687482228868400552567474489250501034857093624184577568397256397519711404394386053806918127762571356839381312261171823757803194242506737946861441555551672977659019959562416882973604727521</span></span><br><span class="line">c= <span class="number">3136716033729239841651527855193478838856206237778382623476323002673660140993283468296727521269046606643005570111263565370046029024734759921698482194871684883853668185647585044859555880105903361901008649</span></span><br><span class="line">e= <span class="number">2</span></span><br><span class="line">inv_p = gmpy2.invert(p, q)</span><br><span class="line">inv_q = gmpy2.invert(q, p)</span><br><span class="line">mp = <span class="built_in">pow</span>(c, (p + <span class="number">1</span>) // <span class="number">4</span>, p)</span><br><span class="line">mq = <span class="built_in">pow</span>(c, (q + <span class="number">1</span>) // <span class="number">4</span>, q)</span><br><span class="line">a = (inv_p * p * mq + inv_q * q * mp) % n</span><br><span class="line">b = n - <span class="built_in">int</span>(a)</span><br><span class="line">c = (inv_p * p * mq - inv_q * q * mp) % n</span><br><span class="line">d = n - <span class="built_in">int</span>(c)</span><br><span class="line"><span class="comment">#因为rabin 加密有四种结果，全部列出。</span></span><br><span class="line">aa=[a,b,c,d]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> aa:</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="built_in">print</span>(libnum.n2s(<span class="built_in">int</span>(i)))</span><br></pre></td></tr></table></figure>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="http://example.com/2022/02/17/CTF小学生——RSA班wp2/">http://example.com/2022/02/17/CTF小学生——RSA班wp2/</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+    <div class="article-reward">
+        <a id="reward-btn" href="javascript:;">打赏</a>
+        <div id="reward-content">
+            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
+            <div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/wechat.jpg">
+                    <img class="er-code" src="/asset/3.jpg">
+                </div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/alipay.jpg">
+                    <img class="er-code" src="/asset/2.jpg">
+                </div>
+            </div>
+            <p class="reward-desc"></p>
+        </div>
+    </div>
+
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wp/" rel="tag">wp</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+  
+    <a href="/2022/01/22/%E4%BD%8E%E8%A7%A3%E5%AF%86%E6%8C%87%E6%95%B0%E6%94%BB%E5%87%BB%EF%BC%88e%E5%BE%88%E5%A4%A7%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">低解密指数攻击（e很大）</div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+
+  <section id="comments" class="vcomment"></section>
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/02/17/CTF%E5%B0%8F%E5%AD%A6%E7%94%9F%E2%80%94%E2%80%94RSA%E7%8F%ADwp2/">CTF小学生——RSA班wp2</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/22/%E4%BD%8E%E8%A7%A3%E5%AF%86%E6%8C%87%E6%95%B0%E6%94%BB%E5%87%BB%EF%BC%88e%E5%BE%88%E5%A4%A7%EF%BC%89/">低解密指数攻击（e很大）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/21/PS%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7%E8%AE%B2%E8%A7%A3/">PS基本工具</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/21/RSA%E5%85%B1%E6%A8%A1%E6%94%BB%E5%87%BB%EF%BC%88m%EF%BC%8Cn%E7%9B%B8%E5%90%8C%EF%BC%89/">RSA共模攻击（m，n相同）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/12/CTF%E5%B0%8F%E5%AD%A6%E7%94%9F%E2%80%94%E2%80%94RSA%E7%8F%ADwp/">CTF小学生——RSA班wp1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android-studio%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">Android studio框架</a> <a href="/tags/C-picture/" style="font-size: 12px;">C++_picture</a> <a href="/tags/C-%E6%B5%81/" style="font-size: 18px;">C++流</a> <a href="/tags/Crypto/" style="font-size: 10px;">Crypto</a> <a href="/tags/Crypto%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/" style="font-size: 10px;">Crypto做题总结</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/RSA/" style="font-size: 14px;">RSA</a> <a href="/tags/wp/" style="font-size: 16px;">wp</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">学习笔记</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 20px;">排序算法</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">文件加密</a> <a href="/tags/%E7%B1%BB/" style="font-size: 10px;">类</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android-studio/">Android studio</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto`</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PS/">PS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年02月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年12月</a><span class="archive-list-count">22</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-studio%E6%A1%86%E6%9E%B6/" rel="tag">Android studio框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-picture/" rel="tag">C++_picture</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E6%B5%81/" rel="tag">C++流</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crypto/" rel="tag">Crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crypto%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/" rel="tag">Crypto做题总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS/" rel="tag">PS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSA/" rel="tag">RSA</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wp/" rel="tag">wp</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86/" rel="tag">文件加密</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB/" rel="tag">类</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-link"></i> 友情链接</h3>
+    <div class="widget">
+      <ul>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://www.baidu.com/">百度</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://www.bilibili.com/">B站</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://www.zhihu.com/">知乎</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://www.csdn.net/?spm=1001.2014.3001.5359">CSDN</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://omnisciencepeople.github.io/">OMNSP</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://azero000.github.io/">Mr.晋</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="http://www.zbc53.top/">crypto大佬</a>
+        </li>
+      
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 Jack.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        
+            <span>Count by <a href="http://busuanzi.ibruce.info/" target="_blank">busuanzi.</a></span>
+        
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("06/01/2021 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  
+<script src="/localshare/js/social-share.js"></script>
+
+  
+<script src="/localshare/js/qrcode.js"></script>
+
+
+
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+  <script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'true' == true;
+    var verify = 'true' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "gct0YqIXLyfE8xgid3y6Y1rm-gzGzoHsz",
+        appKey: "3qT4qSBr7YE16wy2yHP4Msr0",
+        placeholder: "欢迎评论(无需输入昵称、邮箱和网址即可评论）",
+        pageSize:'10',
+        avatar:'mm',
+        lang:'zh-cn'
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+  <script src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML" async type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
