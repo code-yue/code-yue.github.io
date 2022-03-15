@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>JS基础_5 | IT 日志</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="IT 日志" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">IT 日志</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">没有比脚更长的路，走过去，前面是个天！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 联系</a>
+        
+          <a class="main-nav-link" href="/atom.xml"><i class="fa fa-rss"></i> 订阅</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-JS基础-5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      JS基础_5
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-15T11:13:00.000Z" itemprop="datePublished">2022年03月15日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/JS/">JS</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/03/15/JS%E5%9F%BA%E7%A1%80-5/#comments" class="article-comment-link">
+  
+    
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/15/JS%E5%9F%BA%E7%A1%80-5/" itemprop="commentCount"></span>
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>JS基础</p>
+<span id="more"></span>
+<h2 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h2><ol>
+<li>在JS中使用Date对象表示一个时间。</li>
+<li>创建一个Date对象，如果直接使用构造函数创建一个Date对象，则会封装为当前代码执行的时间。</li>
+<li>创建一个指定的时间对象：需要在构造函数中传递一个表示时间的字符串作为参数，日期的格式：月/日/年 时/分/秒。</li>
+<li>Date对象的常用方法。<ol>
+<li>getDate():获取当前日期对象的几日。</li>
+<li>getDay()：获取当前日期的对象是周几（返回0-6，周日返回0）。</li>
+<li>getMonth()：获取当前日期的对象的月份。（返回0-11，0表示一月）。</li>
+<li>getFullYear()：获取当前日期的对象的年份。</li>
+<li>getHours()、getMinutes()、getSeconds()、getMilliseconds():返回小时，分钟、秒、毫秒。</li>
+<li>getTime()<ol>
+<li>获取当前日期对象的时间戳。</li>
+<li>时间戳：指的是从格林威治标准时间的1970年1月1日，0时0秒0分开始到当前日期所花费的毫秒数。<ol>
+<li>计算机底层在保存时间时使用的都是时间戳。</li>
+<li>获取当前的时间戳：time = Date.now();。</li>
+<li>可以使用使用时间戳来测试代码执行的时间。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h2><ol>
+<li>Math和其他的对象不同，它不是一个构造函数，它属于一个工具类不用创建对象，它里面封装了数学运算的属性和方法。</li>
+<li>Math对象的常用属性和方法<ol>
+<li>PI：返回圆周率。</li>
+<li>E：返回自然对数的底数e。</li>
+<li>abs()：返回数的绝对值。</li>
+<li>ceil()：可以对一个数进行向上取整，小数位只要有值就自动进1。</li>
+<li>floor()：对一个数进行向下取整，小数位直接舍去。</li>
+<li>round()：对一个数进行四舍五入取整。</li>
+<li>random()<ol>
+<li>用来生成0-1之间的随机数。</li>
+<li>如果想要生成x-y之间的随机整数：Math.round(Math.random()*(y-x)+x)；</li>
+</ol>
+</li>
+<li>max()：可以获取多个数中的最大值。</li>
+<li>min()：可以获取多个数中的最小值。</li>
+<li>pow(x,y)：返回x的y次方。</li>
+<li>sqrt(x):返回x的开方。</li>
+</ol>
+</li>
+</ol>
+<h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><ol>
+<li>在JS中提供了三个包装类，通过这三个包装类可以将基本数据类型的数据转换为对象。<ol>
+<li>String():可以将基本数据类型的字符串转换为String对象。</li>
+<li>Number()：可以将基本数据类型的数字转换为Number对象。</li>
+<li>Boolean()：可以将基本数据类型的布尔值转换为Boolean对象。</li>
+</ol>
+</li>
+<li>但是我们在实际开发中不会使用基本数据类型的对象，如果使用基本数据类型的对象在做一些比较的时候可能会带来一些不可预见的结果。</li>
+<li>方法和属性值能添加给对象，不能添加给基本数据类型。</li>
+<li>当我们对一些基本数据类型的值去调用属性和方法时，浏览器会临时使用包装类将其转换为对象，然后在调用对象的属性和方法，调用完之后，在将其转换为基本数据类型。</li>
+</ol>
+<h2 id="String包装类的方法"><a href="#String包装类的方法" class="headerlink" title="String包装类的方法"></a>String包装类的方法</h2><ol>
+<li>字符串在计算机底层是以字符数组的形式保存。</li>
+<li>length：返回字符串的长度。</li>
+<li>charAt()：返回字符串中指定位置的字符。</li>
+<li>charCodeAt()：返回字符中指定位置的字符的Unicode编码。</li>
+<li>String.fromCharCode()：返回一个Unicode编码指定的字符，属于对象的方法。</li>
+<li>concat()：可以用来连接两个或多个字符串，和加号作用效果一样。</li>
+<li>indexof():<ol>
+<li>可以检索一个字符串中是否含有指定内容。</li>
+<li>如果字符串中含有该内容，则会返回其第一次出现的索引，如果没有找到指定内容，则会返回-1。</li>
+<li>可以指定第二个参数，指定开始查找的位置。</li>
+</ol>
+</li>
+<li>lastIndexof():该方法的用法和indexof()一样，不同的是indexof()是从前往后找，lastIndexof()是从后往前找。</li>
+<li>slice()：<ol>
+<li>可以从字符串中截取指定的内容。</li>
+<li>第一个参数：开始位置的索引（包括开始位置）。</li>
+<li>第二个参数：结束位置的索引（不包括结束位置），该参数可以省略，表示截取从开始到结束的字符串。</li>
+<li>也可以传递一个负数作为参数，负数的话将会从后边计算。</li>
+</ol>
+</li>
+<li>substring():<ol>
+<li>可以截取一个字符串，和slice()类似。</li>
+<li>第一个参数：开始位置的索引（包括开始位置）。</li>
+<li>第二个参数：结束位置的索引（不包括结束位置）。</li>
+<li>和slice()不同的是这个方法不能接受负值作为参数，如果传递一个负值，则默认使用0。</li>
+<li>而且还会自动调整参数的位置，如果第二个参数小于第一个，则自动交换。</li>
+</ol>
+</li>
+<li>split():<ol>
+<li>可以将一个字符串拆分为一个数组。</li>
+<li>参数：需要一个字符串作为参数，将会根据该字符串去拆分字符串为数组。</li>
+<li>如果传递一个空串作为参数，则会将每一个字符都拆分为数组中的一个元素。</li>
+</ol>
+</li>
+<li>toUpperCase()：将一个字符串转换为大写并返回。</li>
+<li>toLowerCase()：将一个字符串转换为小写并返回。</li>
+</ol>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Date%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.</span> <span class="toc-text">Date对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Math%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">Math对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">包装类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String%E5%8C%85%E8%A3%85%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">String包装类的方法</span></a></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="http://example.com/2022/03/15/JS基础-5/">http://example.com/2022/03/15/JS基础-5/</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+    <div class="article-reward">
+        <a id="reward-btn" href="javascript:;">打赏</a>
+        <div id="reward-content">
+            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
+            <div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/wechat.jpg">
+                    <img class="er-code" src="/asset/3.jpg">
+                </div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/alipay.jpg">
+                    <img class="er-code" src="/asset/2.jpg">
+                </div>
+            </div>
+            <p class="reward-desc"></p>
+        </div>
+    </div>
+
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS%E5%9F%BA%E7%A1%80/" rel="tag">JS基础</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/03/15/JS%E5%9F%BA%E7%A1%80-6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          JS基础_6
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/15/JS%E5%9F%BA%E7%A1%80-4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">JS基础_4</div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+
+  <section id="comments" class="vcomment"></section>
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/15/JS%E5%9F%BA%E7%A1%80-11/">JS基础_11</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/15/JS%E5%9F%BA%E7%A1%80-10/">JS基础_10</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/15/JS%E5%9F%BA%E7%A1%80-9/">JS基础_9</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/15/JS%E5%9F%BA%E7%A1%80-8/">JS基础_8</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/15/JS%E5%9F%BA%E7%A1%80-7/">JS基础_7</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android-studio%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">Android studio框架</a> <a href="/tags/C-picture/" style="font-size: 11.67px;">C++_picture</a> <a href="/tags/C-%E6%B5%81/" style="font-size: 16.67px;">C++流</a> <a href="/tags/Crypto/" style="font-size: 10px;">Crypto</a> <a href="/tags/Crypto%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/" style="font-size: 10px;">Crypto做题总结</a> <a href="/tags/JS%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">JS基础</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/RSA/" style="font-size: 15px;">RSA</a> <a href="/tags/wp/" style="font-size: 16.67px;">wp</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">学习笔记</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 18.33px;">排序算法</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">文件加密</a> <a href="/tags/%E7%B1%BB/" style="font-size: 10px;">类</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android-studio/">Android studio</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto`</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PS/">PS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/crypto/">crypto</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年03月</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年12月</a><span class="archive-list-count">22</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-studio%E6%A1%86%E6%9E%B6/" rel="tag">Android studio框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-picture/" rel="tag">C++_picture</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E6%B5%81/" rel="tag">C++流</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crypto/" rel="tag">Crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crypto%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/" rel="tag">Crypto做题总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E5%9F%BA%E7%A1%80/" rel="tag">JS基础</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS/" rel="tag">PS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSA/" rel="tag">RSA</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wp/" rel="tag">wp</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86/" rel="tag">文件加密</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB/" rel="tag">类</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-link"></i> 友情链接</h3>
+    <div class="widget">
+      <ul>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://www.baidu.com/">百度</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://www.bilibili.com/">B站</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://www.zhihu.com/">知乎</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://www.csdn.net/?spm=1001.2014.3001.5359">CSDN</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://omnisciencepeople.github.io/">OMNSP</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://azero000.github.io/">Mr.晋</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="http://www.zbc53.top/">crypto大佬</a>
+        </li>
+      
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 Jack.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        
+            <span>Count by <a href="http://busuanzi.ibruce.info/" target="_blank">busuanzi.</a></span>
+        
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("06/01/2021 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  
+<script src="/localshare/js/social-share.js"></script>
+
+  
+<script src="/localshare/js/qrcode.js"></script>
+
+
+
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+  <script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'true' == true;
+    var verify = 'true' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "gct0YqIXLyfE8xgid3y6Y1rm-gzGzoHsz",
+        appKey: "3qT4qSBr7YE16wy2yHP4Msr0",
+        placeholder: "欢迎评论(无需输入昵称、邮箱和网址即可评论）",
+        pageSize:'10',
+        avatar:'mm',
+        lang:'zh-cn'
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+  <script src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML" async type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
